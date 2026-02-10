@@ -1,0 +1,8 @@
+html {
+  background-image: linear-gradient(#ffffff, #bbbbbb);
+  background-attachment: fixed;
+}
+
+div#diffSelector {
+  background-color: #00000066;
+}
