@@ -1,3 +1,5 @@
+@font-face {font-family: Pusab; src: url(/gdeditor/assets/fonts/Pusab.ttf)}
+
 html {
   background-image: linear-gradient(#ffffff, #bbbbbb);
   background-attachment: fixed;
@@ -12,7 +14,17 @@ div#diffSelector {
   padding: 0px 16px;
 }
 
-class.diffIcon {
-  transform: scale(0.4);
-  margin: -30px;
+button {
+  font-family: 'Pusab';
+  font-size: 35px;
+  -webkit-text-stroke: 1.5px;
+  -webkit-text-stroke-color: #000000;
+  color: #ffffff;
+  text-shadow: 2.3px 2.3px 1.5px #00000050;
+  border-image: url(/gdeditor/assets/btn_green.png) 16% round;
+  border-width: 15px;
+  border-radius: 15px;
+  padding: 4px 32px;
+  background-color: var(--btnGreen);
+  cursor: pointer;
 }
