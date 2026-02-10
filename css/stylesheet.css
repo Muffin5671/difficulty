@@ -6,3 +6,7 @@ html {
 div#diffSelector {
   background-color: #00000066;
 }
+
+class.diffIcon {
+  background-size: 10px;
+}
