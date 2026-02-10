@@ -5,6 +5,15 @@ html {
   background-attachment: fixed;
 }
 
+p {
+  font-family: Helvetica;
+  color: #ffffff;
+}
+
+a {
+  color: #00ffff;
+}
+
 div#diffSelector {
   background-color: #00000066;
   display: flex;
@@ -25,6 +34,6 @@ button {
   border-image: url(/gdeditor/assets/btn_green.png) 16% round;
   border-width: 15px;
   border-radius: 15px;
-  padding: 4px 32px;
+  padding: 2px 12px;
   cursor: pointer;
 }
