@@ -21,6 +21,7 @@ span.Helvetica {
 
 a {
   color: #00ffff;
+  text-decoration: none;
 }
 
 div#diffSelector {
