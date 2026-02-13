@@ -50,7 +50,7 @@ async function calculateSearch(query) {
 async function calculatePage() {
   let query = new URLSearchParams(window.location.search).get('query');
   if (query == '') {
-    let calculation = await calculateSearch('*'));
+    let calculation = await calculateSearch('*');
   } else {
     let calculation = await calculateSearch(encodeURI(query));
   }
@@ -61,6 +61,7 @@ async function calculatePage() {
   document.getElementsByClassName('diffPercent')[4].innerHTML = calculation.insane;
 
   // Demon calculations are... Coming Soon™
+  
 }
 
 window.onload = calculatePage();
