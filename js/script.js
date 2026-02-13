@@ -70,6 +70,7 @@ async function calculatePage() {
       calculation = await calculateSearch(encodeURI(query));
     }
   } catch (error) {
+    document.getElementById('title').innerHTML = 'Error';
     document.getElementsByClassName('diffPercent')[0].innerHTML = 'Error';
     document.getElementsByClassName('diffPercent')[1].innerHTML = 'Error';
     document.getElementsByClassName('diffPercent')[2].innerHTML = 'Error';
@@ -78,7 +79,8 @@ async function calculatePage() {
   }
 
   // page editing
-  
+
+  document.getElementById('title').innerHTML = decodeURI(query);
   document.getElementsByClassName('diffPercent')[0].innerHTML = calculation.easy;
   document.getElementsByClassName('diffPercent')[1].innerHTML = calculation.normal;
   document.getElementsByClassName('diffPercent')[2].innerHTML = calculation.hard;
