@@ -16,14 +16,16 @@ p {
 
 span.helvetica {
   font-family: Helvetica;
+  font-size: 24px;
   color: #ffffff;
-  -webkit-text-stroke: 1.5px;
-  -webkit-text-stroke-color: #000000;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
 }
 
 a {
   color: #00ffff;
   text-decoration: none;
+  -webkit-text-stroke-color: #000000;
 }
 
 div#diffSelector {
@@ -66,6 +68,7 @@ input {
   outline: none;
   padding-left: 10px;
   padding-right: 10px;
+  height: 45px;
 }
 
 ::placeholder {
