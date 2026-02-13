@@ -62,10 +62,11 @@ async function calculatePage() {
   // get search query
   
   let query = new URLSearchParams(window.location.search).get('query');
+  let calculation;
   if (query == '') {
-    let calculation = await calculateSearch('*');
+    calculation = await calculateSearch('*');
   } else {
-    let calculation = await calculateSearch(encodeURI(query));
+    calculation = await calculateSearch(encodeURI(query));
   }
 
   // page editing
