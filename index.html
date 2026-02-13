@@ -6,7 +6,7 @@
   <head>
     <title>Compare Difficulties Online</title>
     <link rel="stylesheet" href="css/stylesheet.css">
-    <script src="js/script.js"></script>
+    <script src="main.js"></script>
   </head>
   <body style="
     display: flex;
@@ -14,57 +14,15 @@
     align-items: center;
     text-align: center;
     ">
-    <p>Filters</p>
-    <div id="diffSelector">
-      <img src="images/na.png" title="N/A" alt="N/A" style="
-        transform: scale(0.4);
-        margin: -30px;
-        cursor: pointer;
-        " diff="-1">
-      <img src="images/easy.png" title="Easy" alt="Easy" class="diffIcon" style="
-        transform: scale(0.4);
-        margin: -30px;
-        cursor: pointer;
-        " diff="1">
-      <img src="images/normal.png" title="Normal" alt="Normal" class="diffIcon" style="
-        transform: scale(0.4);
-        margin: -30px;
-        cursor: pointer;
-        " diff="2">
-      <img src="images/hard.png" title="Hard" alt="Hard" class="diffIcon" style="
-        transform: scale(0.4);
-        margin: -30px;
-        cursor: pointer;
-        " diff="3">
-      <img src="images/harder.png" title="Harder" alt="Harder" class="diffIcon" style="
-        transform: scale(0.4);
-        margin: -30px;
-        cursor: pointer;
-        " diff="4">
-      <img src="images/insane.png" title="Insane" alt="Insane" class="diffIcon" style="
-        transform: scale(0.4);
-        margin: -30px;
-        cursor: pointer;
-        " diff="5">
-      <img src="images/demon.png" title="Demon" alt="Demon" style="
-        transform: scale(0.4);
-        margin: -30px;
-        cursor: pointer;
-        " diff="-2">
-      <img src="images/auto.png" title="Auto" alt="Auto" style="
-        transform: scale(0.4);
-        margin: -30px;
-        cursor: pointer;
-        " diff="-2">
-    </div>
+    <noscript><p>This page requires JavaScript to function. Please enable JavaScript in your browser's settings.</p></noscript>
+    <input id="searchBar" placeholder="Enter a level, user or id">
     <button style="
-    margin: 20px;
-">Search</button>
-    <p>Credit to <a href="https:/www.gdcolon.com/">GD Colon</a> for the api</p>
+      margin: 20px;
+      " onclick="searchLevels()">Search</button>
+    <p>Credit to <a href="https://www.gdcolon.com/">GD Colon</a> for the api</p>
     <p style="
       margin-left: 150px;
       margin-right: 150px;
       ">Yes i know it says don't use the api but i don't want to use the actual gd api</p>
-    <noscript><p>Please enable JavaScript in your browser's settings.</p></noscript>
   </body>
 </html>
