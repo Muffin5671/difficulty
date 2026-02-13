@@ -49,12 +49,17 @@ async function calculateSearch(query) {
 
 async function calculatePage() {
   let query = new URLSearchParams(window.location.search).get('query');
-  let calculation = await calculateSearch(query.replace('','*'));
+  if (query == '') {
+    let calculation = await calculateSearch('*'));
+  } else {
+    let calculation = await calculateSearch(encodeURI(query));
+  }
   document.getElementsByClassName('diffPercent')[0].innerHTML = calculation.easy;
   document.getElementsByClassName('diffPercent')[1].innerHTML = calculation.normal;
   document.getElementsByClassName('diffPercent')[2].innerHTML = calculation.hard;
   document.getElementsByClassName('diffPercent')[3].innerHTML = calculation.harder;
   document.getElementsByClassName('diffPercent')[4].innerHTML = calculation.insane;
+
   // Demon calculations are... Coming Soon™
 }
 
