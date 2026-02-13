@@ -1,5 +1,9 @@
 async function calculateSearch(query) {
 
+  // start timer
+  
+  console.time('Calculation time');
+
   // default values
 
   var select = 0;
@@ -44,16 +48,28 @@ async function calculateSearch(query) {
     'hard': Math.round(hard / response.length * 100) + '%', 
     'harder': Math.round(harder / response.length * 100) + '%', 
     'insane': Math.round(insane / response.length * 100) + '%'
-  };  
+  };
+
+  // end timer
+
+  console.info('Finished calculating');
+  console.timeEnd('Calculation time');
+  
 }
 
 async function calculatePage() {
+
+  // get search query
+  
   let query = new URLSearchParams(window.location.search).get('query');
   if (query == '') {
     let calculation = await calculateSearch('*');
   } else {
     let calculation = await calculateSearch(encodeURI(query));
   }
+
+  // page editing
+  
   document.getElementsByClassName('diffPercent')[0].innerHTML = calculation.easy;
   document.getElementsByClassName('diffPercent')[1].innerHTML = calculation.normal;
   document.getElementsByClassName('diffPercent')[2].innerHTML = calculation.hard;
