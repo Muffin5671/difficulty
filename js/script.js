@@ -63,10 +63,18 @@ async function calculatePage() {
   
   let query = new URLSearchParams(window.location.search).get('query');
   let calculation;
-  if (query == '') {
-    calculation = await calculateSearch('*');
-  } else {
-    calculation = await calculateSearch(encodeURI(query));
+  try {
+    if (query == '') {
+      calculation = await calculateSearch('*');
+    } else {
+      calculation = await calculateSearch(encodeURI(query));
+    }
+  } catch (error) {
+    document.getElementsByClassName('diffPercent')[0].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[1].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[2].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[3].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[4].innerHTML = 'Error';
   }
 
   // page editing
