@@ -28,6 +28,18 @@ a {
   -webkit-text-stroke-color: #000000;
 }
 
+div#brownbox {
+  border-width: 20px;
+  border-style: solid;
+  border-radius: 30px;
+  background-color: var(--gdbrown);
+  border-image: url(/gdeditor/assets/brownbox.png) 12% round;
+  padding: 0px 128px 24px;
+  display: grid;
+  justify-items: center;
+  z-index: -1;
+}
+
 div#diffSelector {
   background-color: #00000066;
   display: flex;
