@@ -8,11 +8,17 @@ async function calculateSearch(query) {
 
   var select = 0;
   var na = 0;
+  var auto = 0;
   var easy = 0;
   var normal = 0;
   var hard = 0;
   var harder = 0;
   var insane = 0;
+  var easyDemon = 0;
+  var mediumDemon = 0;
+  var hardDemon = 0;
+  var insaneDemon = 0;
+  var extremeDemon = 0;
   var demon = 0;
   var auto = 0;
 
@@ -26,6 +32,8 @@ async function calculateSearch(query) {
   for (null; select < response.length; select++) {
     if (response[select].difficulty == 'Unrated') {
       na++
+    } else if (response[select].difficulty == 'Auto') {
+      auto++
     } else if (response[select].difficulty == 'Easy') {
       easy++
     } else if (response[select].difficulty == 'Normal') {
@@ -36,6 +44,21 @@ async function calculateSearch(query) {
       harder++
     } else if (response[select].difficulty == 'Insane') {
       insane++
+    } else if (response[select].difficulty == 'Easy Demon') {
+      easyDemon++
+      demon++
+    } else if (response[select].difficulty == 'Medium Demon') {
+      mediumDemon++
+      demon++
+    } else if (response[select].difficulty == 'Hard Demon') {
+      hardDemon++
+      demon++
+    } else if (response[select].difficulty == 'Insane Demon') {
+      insaneDemon++
+      demon++
+    } else if (response[select].difficulty == 'Extreme Demon') {
+      extremeDemon++
+      demon++
     }
   }
 
@@ -43,18 +66,19 @@ async function calculateSearch(query) {
 
   return {
     'na': Math.round(na / response.length * 100) + '%', 
+    'auto': Math.round(auto / response.length * 100) + '%', 
     'easy': Math.round(easy / response.length * 100) + '%', 
     'normal': Math.round(normal / response.length * 100) + '%', 
     'hard': Math.round(hard / response.length * 100) + '%', 
     'harder': Math.round(harder / response.length * 100) + '%', 
-    'insane': Math.round(insane / response.length * 100) + '%'
+    'insane': Math.round(insane / response.length * 100) + '%',
+    'easyDemon': Math.round(easyDemon / response.length * 100) + '%',
+    'mediumDemon': Math.round(mediumDemon / response.length * 100) + '%',
+    'hardDemon': Math.round(hardDemon / response.length * 100) + '%',
+    'insaneDemon': Math.round(insaneDemon / response.length * 100) + '%',
+    'extremeDemon': Math.round(extremeDemon / response.length * 100) + '%',
+    'demon': Math.round(demon / response.length * 100) + '%'
   };
-
-  // end timer
-
-  console.info('Finished calculating');
-  console.timeEnd('Calculation time');
-  
 }
 
 async function calculatePage() {
@@ -77,19 +101,31 @@ async function calculatePage() {
     document.getElementsByClassName('diffPercent')[3].innerHTML = 'Error';
     document.getElementsByClassName('diffPercent')[4].innerHTML = 'Error';
     document.getElementsByClassName('diffPercent')[5].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[6].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[7].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[8].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[9].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[10].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[11].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[12].innerHTML = 'Error';
   }
 
-  // page editing
-
+  // page editing (extremely inconvenient setup)
+  
   document.getElementById('title').innerHTML = decodeURI(query);
-  document.getElementsByClassName('diffPercent')[0].innerHTML = calculation.easy;
-  document.getElementsByClassName('diffPercent')[1].innerHTML = calculation.normal;
-  document.getElementsByClassName('diffPercent')[2].innerHTML = calculation.hard;
-  document.getElementsByClassName('diffPercent')[3].innerHTML = calculation.harder;
-  document.getElementsByClassName('diffPercent')[4].innerHTML = calculation.insane;
-  document.getElementsByClassName('diffPercent')[5].innerHTML = calculation.na;
-
-  // Demon calculations are... Coming Soon™
+  document.getElementsByClassName('diffPercent')[0].innerHTML = calculation.na;
+  document.getElementsByClassName('diffPercent')[1].innerHTML = calculation.auto;
+  document.getElementsByClassName('diffPercent')[2].innerHTML = calculation.easy;
+  document.getElementsByClassName('diffPercent')[3].innerHTML = calculation.normal;
+  document.getElementsByClassName('diffPercent')[4].innerHTML = calculation.hard;
+  document.getElementsByClassName('diffPercent')[5].innerHTML = calculation.harder;
+  document.getElementsByClassName('diffPercent')[6].innerHTML = calculation.insane;
+  document.getElementsByClassName('diffPercent')[7].innerHTML = calculation.easyDemon;
+  document.getElementsByClassName('diffPercent')[8].innerHTML = calculation.mediumDemon;
+  document.getElementsByClassName('diffPercent')[9].innerHTML = calculation.hardDemon;
+  document.getElementsByClassName('diffPercent')[10].innerHTML = calculation.insaneDemon;
+  document.getElementsByClassName('diffPercent')[11].innerHTML = calculation.extremeDemon;
+  document.getElementsByClassName('diffPercent')[12].innerHTML = calculation.demon;
   
 }
 
