@@ -64,7 +64,7 @@ async function calculatePage() {
   let query = new URLSearchParams(window.location.search).get('query');
   let calculation;
   try {
-    if (query == '') {
+    if (query == '' || query == null) {
       calculation = await calculateSearch('*');
     } else {
       calculation = await calculateSearch(encodeURI(query));
@@ -76,6 +76,7 @@ async function calculatePage() {
     document.getElementsByClassName('diffPercent')[2].innerHTML = 'Error';
     document.getElementsByClassName('diffPercent')[3].innerHTML = 'Error';
     document.getElementsByClassName('diffPercent')[4].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[5].innerHTML = 'Error';
   }
 
   // page editing
@@ -86,6 +87,7 @@ async function calculatePage() {
   document.getElementsByClassName('diffPercent')[2].innerHTML = calculation.hard;
   document.getElementsByClassName('diffPercent')[3].innerHTML = calculation.harder;
   document.getElementsByClassName('diffPercent')[4].innerHTML = calculation.insane;
+  document.getElementsByClassName('diffPercent')[5].innerHTML = calculation.na;
 
   // Demon calculations are... Coming Soon™
   
