@@ -51,6 +51,14 @@ div#diffSelector {
   border-radius: 16px;
 }
 
+.fadedBox {
+  border: 0 solid transparent;
+  border-radius: 2vh;
+  background-color: #0000004d;
+  outline: none;
+  padding: 6px;
+}
+
 button {
   font-family: 'Pusab';
   font-size: 35px;
