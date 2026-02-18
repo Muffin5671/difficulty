@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="
+<html lang="en" style="
   position: absolute;
   top: 18%;
   ">
@@ -16,17 +16,24 @@
     text-align: center;
     ">
     <noscript><p>This page requires JavaScript to function. Please enable JavaScript in your browser's settings.</p></noscript>
-    <div class="fadedBox">
+    <div class="fadedBox" style="
+      display: flex;
+      margin-bottom: 100px;
+      align-items: center;
+      ">
       <input id="searchBar" placeholder="Enter a level, user or id" maxlength="20" style="
         background-color: #00000022;
         text-align: left; 
         width: 400px;
         ">
-    </div>
-    <button style="
+      <img src="images/GJ_searchBtn_001.png" style="
+    margin-left: 5px;
+    inline-size: 60px;
+" title="Search" alt="Search Button" onclick="searchLevels()">
+    <!-- <button style="
       margin: 20px;
       margin-bottom: 100px;
-      " onclick="searchLevels()">Search</button>
+      " onclick="searchLevels()">Search</button> -->
     <p>Website created by <a href="https://muffin5671.github.io/" target="_blank">MuffinGDYT</a></p>
     <p style="
       margin: 0;
