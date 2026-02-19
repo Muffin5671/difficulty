@@ -1,9 +1,5 @@
 async function calculateSearch(query) {
 
-  // start timer
-  
-  console.time('Calculation time');
-
   // default values
 
   var select = 0;
@@ -20,14 +16,13 @@ async function calculateSearch(query) {
   var insaneDemon = 0;
   var extremeDemon = 0;
   var demon = 0;
-  var auto = 0;
 
-  // get levels from API
+  // fetch levels from API
 
   let data = await fetch(`https://gdbrowser.com/api/search/${query}`);
   let response = await data.json();
 
-  // difficulty check
+  // count levels of each difficulty
 
   for (null; select < response.length; select++) {
     if (response[select].difficulty == 'Unrated') {
@@ -65,19 +60,19 @@ async function calculateSearch(query) {
   // calculate by percentage
 
   return {
-    'na': Math.round(na / response.length * 100) + '%', 
-    'auto': Math.round(auto / response.length * 100) + '%', 
-    'easy': Math.round(easy / response.length * 100) + '%', 
-    'normal': Math.round(normal / response.length * 100) + '%', 
-    'hard': Math.round(hard / response.length * 100) + '%', 
-    'harder': Math.round(harder / response.length * 100) + '%', 
-    'insane': Math.round(insane / response.length * 100) + '%',
-    'easyDemon': Math.round(easyDemon / response.length * 100) + '%',
-    'mediumDemon': Math.round(mediumDemon / response.length * 100) + '%',
-    'hardDemon': Math.round(hardDemon / response.length * 100) + '%',
-    'insaneDemon': Math.round(insaneDemon / response.length * 100) + '%',
-    'extremeDemon': Math.round(extremeDemon / response.length * 100) + '%',
-    'demon': Math.round(demon / response.length * 100) + '%'
+    'na': na / response.length * 100 + '%', 
+    'auto': auto / response.length * 100 + '%', 
+    'easy': easy / response.length * 100 + '%', 
+    'normal': normal / response.length * 100 + '%', 
+    'hard': hard / response.length * 100 + '%', 
+    'harder': harder / response.length * 100 + '%', 
+    'insane': insane / response.length * 100 + '%',
+    'easyDemon': easyDemon / response.length * 100 + '%',
+    'mediumDemon': mediumDemon / response.length * 100 + '%',
+    'hardDemon': hardDemon / response.length * 100 + '%',
+    'insaneDemon': insaneDemon / response.length * 100 + '%',
+    'extremeDemon': extremeDemon / response.length * 100 + '%',
+    'demon': demon / response.length * 100 + '%'
   };
 }
 
