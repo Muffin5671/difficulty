@@ -52,7 +52,7 @@ div#diffSelector {
 }
 
 .fadedBox {
-  border: 0 solid transparent;
+  border: none;
   border-radius: 2vh;
   background-color: #0000004d;
   outline: none;
@@ -75,10 +75,10 @@ button {
 }
 
 input {
-  border: 0 solid transparent;
-  border-radius: 2vh;
+  border: none;
+  border-radius: 1.5vh;
   background-color: #0000004d;
-  font-family: Pusab;
+  font-family: 'Pusab';
   font-size: 35px;
   -webkit-text-stroke: 1.2px;
   -webkit-text-stroke-color: #000000;
