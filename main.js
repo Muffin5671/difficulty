@@ -5,5 +5,5 @@ function searchLevels() {
 
 function searchUsers() {
   let query = encodeURI(document.getElementById('searchBar').value);
-  window.location.href = `search/?query=${query}&user=true`;
+  window.location.href = `search/?query=${query}&user=1`;
 }
