@@ -19,41 +19,63 @@ async function calculateSearch(query) {
 
   // fetch levels from API
 
-  let data = await fetch(`https://gdbrowser.com/api/search/${query}`);
+  let isUserSearch = Number(new URLSearchParams(window.location.search).get('user')) > 0;
+
+  let url;
+  if (isUserSearch) {
+    url = `https://gdbrowser.com/api/search/${query}?user`;
+  } else {
+    url = `https://gdbrowser.com/api/search/${query}`;
+  }
+
+  let data = await fetch(url);
   let response = await data.json();
 
   // count levels of each difficulty
 
   for (null; select < response.length; select++) {
-    if (response[select].difficulty == 'Unrated') {
-      na++
-    } else if (response[select].difficulty == 'Auto') {
-      auto++
-    } else if (response[select].difficulty == 'Easy') {
-      easy++
-    } else if (response[select].difficulty == 'Normal') {
-      normal++
-    } else if (response[select].difficulty == 'Hard') {
-      hard++
-    } else if (response[select].difficulty == 'Harder') {
-      harder++
-    } else if (response[select].difficulty == 'Insane') {
-      insane++
-    } else if (response[select].difficulty == 'Easy Demon') {
-      easyDemon++
-      demon++
-    } else if (response[select].difficulty == 'Medium Demon') {
-      mediumDemon++
-      demon++
-    } else if (response[select].difficulty == 'Hard Demon') {
-      hardDemon++
-      demon++
-    } else if (response[select].difficulty == 'Insane Demon') {
-      insaneDemon++
-      demon++
-    } else if (response[select].difficulty == 'Extreme Demon') {
-      extremeDemon++
-      demon++
+    switch (response[select].difficulty) {
+      case 'Unrated':
+        na++;
+        break;
+      case 'Auto':
+        auto++;
+        break;
+      case 'Easy':
+        easy++;
+        break;
+      case 'Normal':
+        normal++;
+        break;
+      case 'Hard':
+        hard++;
+        break;
+      case 'Harder':
+        harder++;
+        break;
+      case 'Insane':
+        insane++;
+        break;
+      case 'Easy Demon':
+        easyDemon++;
+        demon++;
+        break;
+      case 'Medium Demon':
+        mediumDemon++;
+        demon++;
+        break;
+      case 'Hard Demon':
+        hardDemon++;
+        demon++;
+        break;
+      case 'Insane Demon':
+        insaneDemon++;
+        demon++;
+        break;
+      case 'Extreme Demon':
+        extremeDemon++;
+        demon++;
+        break;
     }
   }
 
@@ -90,19 +112,19 @@ async function calculatePage() {
     }
   } catch (error) {
     document.getElementById('title').innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[0].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[1].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[2].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[3].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[4].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[5].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[6].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[7].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[8].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[9].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[10].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[11].innerHTML = 'Error';
-    document.getElementsByClassName('diffPercent')[12].innerHTML = 'Error';
+    document.getElementsByClassName('diffPercent')[0].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[1].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[2].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[3].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[4].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[5].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[6].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[7].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[8].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[9].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[10].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[11].innerHTML = '0%';
+    document.getElementsByClassName('diffPercent')[12].innerHTML = '0%';
   }
 
   // page editing (extremely inconvenient setup)
