@@ -19,7 +19,7 @@ async function calculateSearch(query) {
 
   // fetch levels from API
 
-  let isUserSearch = Number(new URLSearchParams(window.location.search).get('user')) > 0;
+  let isUserSearch = Boolean(Number(new URLSearchParams(window.location.search).get('user')));
 
   let url;
   if (isUserSearch) {
@@ -111,7 +111,7 @@ async function calculatePage() {
       calculation = await calculateSearch(encodeURI(query));
     }
   } catch (error) {
-    document.getElementById('title').innerHTML = 'Error';
+    document.getElementById('title').innerHTML = 'No Levels';
     document.getElementsByClassName('diffPercent')[0].innerHTML = '0%';
     document.getElementsByClassName('diffPercent')[1].innerHTML = '0%';
     document.getElementsByClassName('diffPercent')[2].innerHTML = '0%';
