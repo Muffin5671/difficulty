@@ -28,8 +28,7 @@ async function calculateSearch(query) {
     url = `https://gdbrowser.com/api/search/${query}`;
   }
 
-  let data = await fetch(url);
-  let response = await data.json();
+  let data = await fetch(url).then(res => res.json());
 
   // count levels of each difficulty
 
