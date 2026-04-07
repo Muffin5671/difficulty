@@ -1,103 +1,102 @@
-async function calculateSearch(query) {
+function calculateSearch(query) {
 
   // default values
 
-  var select = 0;
-  var na = 0;
-  var auto = 0;
-  var easy = 0;
-  var normal = 0;
-  var hard = 0;
-  var harder = 0;
-  var insane = 0;
-  var easyDemon = 0;
-  var mediumDemon = 0;
-  var hardDemon = 0;
-  var insaneDemon = 0;
-  var extremeDemon = 0;
-  var demon = 0;
+  let na = 0;
+  let auto = 0;
+  let easy = 0;
+  let normal = 0;
+  let hard = 0;
+  let harder = 0;
+  let insane = 0;
+  let easyDemon = 0;
+  let mediumDemon = 0;
+  let hardDemon = 0;
+  let insaneDemon = 0;
+  let extremeDemon = 0;
+  let demon = 0;
 
   // fetch levels from API
 
   let isUserSearch = Boolean(Number(new URLSearchParams(window.location.search).get('user')));
 
   let url;
-  if (isUserSearch) {
-    url = `https://gdbrowser.com/api/search/${query}?user`;
-  } else {
-    url = `https://gdbrowser.com/api/search/${query}`;
-  }
+  if (isUserSearch) url = `https://gdbrowser.com/api/search/${query}?user`;
+  else url = `https://gdbrowser.com/api/search/${query}`;
 
-  let data = await fetch(url).then(res => res.json());
+  fetch(url)
+  .then(res => res.json())
+  .then(data => {
 
-  // count levels of each difficulty
+    // count levels of each difficulty
 
-  for (null; select < response.length; select++) {
-    switch (response[select].difficulty) {
-      case 'Unrated':
-        na++;
-        break;
-      case 'Auto':
-        auto++;
-        break;
-      case 'Easy':
-        easy++;
-        break;
-      case 'Normal':
-        normal++;
-        break;
-      case 'Hard':
-        hard++;
-        break;
-      case 'Harder':
-        harder++;
-        break;
-      case 'Insane':
-        insane++;
-        break;
-      case 'Easy Demon':
-        easyDemon++;
-        demon++;
-        break;
-      case 'Medium Demon':
-        mediumDemon++;
-        demon++;
-        break;
-      case 'Hard Demon':
-        hardDemon++;
-        demon++;
-        break;
-      case 'Insane Demon':
-        insaneDemon++;
-        demon++;
-        break;
-      case 'Extreme Demon':
-        extremeDemon++;
-        demon++;
-        break;
+    for (let i = 0; i < response.length; i++) {
+      switch (response[i].difficulty) {
+        case 'Unrated':
+          na++;
+          break;
+        case 'Auto':
+          auto++;
+          break;
+        case 'Easy':
+          easy++;
+          break;
+        case 'Normal':
+          normal++;
+          break;
+        case 'Hard':
+          hard++;
+          break;
+        case 'Harder':
+          harder++;
+          break;
+        case 'Insane':
+          insane++;
+          break;
+        case 'Easy Demon':
+          easyDemon++;
+          demon++;
+          break;
+        case 'Medium Demon':
+          mediumDemon++;
+          demon++;
+          break;
+        case 'Hard Demon':
+          hardDemon++;
+          demon++;
+          break;
+        case 'Insane Demon':
+          insaneDemon++;
+          demon++;
+          break;
+        case 'Extreme Demon':
+          extremeDemon++;
+          demon++;
+          break;
+      }
     }
-  }
 
-  // calculate by percentage
+    // calculate by percentage
 
-  return {
-    'na': na / response.length * 100 + '%', 
-    'auto': auto / response.length * 100 + '%', 
-    'easy': easy / response.length * 100 + '%', 
-    'normal': normal / response.length * 100 + '%', 
-    'hard': hard / response.length * 100 + '%', 
-    'harder': harder / response.length * 100 + '%', 
-    'insane': insane / response.length * 100 + '%',
-    'easyDemon': easyDemon / response.length * 100 + '%',
-    'mediumDemon': mediumDemon / response.length * 100 + '%',
-    'hardDemon': hardDemon / response.length * 100 + '%',
-    'insaneDemon': insaneDemon / response.length * 100 + '%',
-    'extremeDemon': extremeDemon / response.length * 100 + '%',
-    'demon': demon / response.length * 100 + '%'
-  };
+    return {
+      'na': na / response.length * 100 + '%', 
+      'auto': auto / response.length * 100 + '%', 
+      'easy': easy / response.length * 100 + '%', 
+      'normal': normal / response.length * 100 + '%', 
+      'hard': hard / response.length * 100 + '%', 
+      'harder': harder / response.length * 100 + '%', 
+      'insane': insane / response.length * 100 + '%',
+      'easyDemon': easyDemon / response.length * 100 + '%',
+      'mediumDemon': mediumDemon / response.length * 100 + '%',
+      'hardDemon': hardDemon / response.length * 100 + '%',
+      'insaneDemon': insaneDemon / response.length * 100 + '%',
+      'extremeDemon': extremeDemon / response.length * 100 + '%',
+      'demon': demon / response.length * 100 + '%'
+    }
+  })
 }
 
-async function calculatePage() {
+function calculatePage() {
 
   // get search query
   
@@ -105,9 +104,9 @@ async function calculatePage() {
   let calculation;
   try {
     if (query == '' || query == null) {
-      calculation = await calculateSearch('*');
+      calculation = calculateSearch('*');
     } else {
-      calculation = await calculateSearch(encodeURI(query));
+      calculation = calculateSearch(encodeURI(query));
     }
   } catch (error) {
     document.getElementById('title').innerHTML = 'No Levels';

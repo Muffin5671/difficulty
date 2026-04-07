@@ -1,4 +1,4 @@
-var ratedFilterEnabled = false;
+let ratedFilterEnabled = false;
 
 function searchLevels() {
   let query = encodeURI(document.getElementById('searchBar').value);
@@ -20,10 +20,10 @@ function toggleRated() {
   if (ratedFilterEnabled == false) {
     ratedFilterEnabled = true;
     document.getElementById('ratedLVLSButton').style.filter = '';
-    document.getElementById('ratedLVLSButton').title = 'Rated Levels [ON]'
+    document.getElementById('ratedLVLSButton').title = 'Rated Levels [ON]';
   } else {
     ratedFilterEnabled = false;
     document.getElementById('ratedLVLSButton').style.filter = 'grayscale(1)';
-    document.getElementById('ratedLVLSButton').title = 'Rated Levels [OFF]'
+    document.getElementById('ratedLVLSButton').title = 'Rated Levels [OFF]';
   }
 }
