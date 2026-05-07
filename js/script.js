@@ -20,18 +20,15 @@ function calculateSearch(query) {
 
   let isUserSearch = Boolean(Number(new URLSearchParams(window.location.search).get('user')));
 
-  let url;
-  if (isUserSearch) url = `https://gdbrowser.com/api/search/${query}?user`;
-  else url = `https://gdbrowser.com/api/search/${query}`;
+  let url = `https://gdbrowser.com/api/search/${query}${isUserSearch ? '?user' : ''}`;
 
   fetch(url)
   .then(res => res.json())
   .then(data => {
 
     // count levels of each difficulty
-
-    for (let i = 0; i < response.length; i++) {
-      switch (response[i].difficulty) {
+    for (let i = 0; i < data.length; i++) {
+      switch (data[i].difficulty) {
         case 'Unrated':
           na++;
           break;
@@ -73,25 +70,28 @@ function calculateSearch(query) {
           extremeDemon++;
           demon++;
           break;
+        default:
+          na++;
+          break;
       }
     }
 
     // calculate by percentage
 
     return {
-      'na': na / response.length * 100 + '%', 
-      'auto': auto / response.length * 100 + '%', 
-      'easy': easy / response.length * 100 + '%', 
-      'normal': normal / response.length * 100 + '%', 
-      'hard': hard / response.length * 100 + '%', 
-      'harder': harder / response.length * 100 + '%', 
-      'insane': insane / response.length * 100 + '%',
-      'easyDemon': easyDemon / response.length * 100 + '%',
-      'mediumDemon': mediumDemon / response.length * 100 + '%',
-      'hardDemon': hardDemon / response.length * 100 + '%',
-      'insaneDemon': insaneDemon / response.length * 100 + '%',
-      'extremeDemon': extremeDemon / response.length * 100 + '%',
-      'demon': demon / response.length * 100 + '%'
+      'na': na / data.length * 100 + '%', 
+      'auto': auto / data.length * 100 + '%', 
+      'easy': easy / data.length * 100 + '%', 
+      'normal': normal / data.length * 100 + '%', 
+      'hard': hard / data.length * 100 + '%', 
+      'harder': harder / data.length * 100 + '%', 
+      'insane': insane / data.length * 100 + '%',
+      'easyDemon': easyDemon / data.length * 100 + '%',
+      'mediumDemon': mediumDemon / data.length * 100 + '%',
+      'hardDemon': hardDemon / data.length * 100 + '%',
+      'insaneDemon': insaneDemon / data.length * 100 + '%',
+      'extremeDemon': extremeDemon / data.length * 100 + '%',
+      'demon': demon / data.length * 100 + '%'
     }
   })
 }
@@ -103,26 +103,13 @@ function calculatePage() {
   let query = new URLSearchParams(window.location.search).get('query');
   let calculation;
   try {
-    if (query == '' || query == null) {
-      calculation = calculateSearch('*');
-    } else {
-      calculation = calculateSearch(encodeURI(query));
-    }
-  } catch (error) {
+    if (query == '' || query == null) calculation = calculateSearch('*')
+    else calculation = calculateSearch(encodeURI(query));
+  } catch (err) {
     document.getElementById('title').innerHTML = 'No Levels';
-    document.getElementsByClassName('diffPercent')[0].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[1].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[2].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[3].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[4].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[5].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[6].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[7].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[8].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[9].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[10].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[11].innerHTML = '0%';
-    document.getElementsByClassName('diffPercent')[12].innerHTML = '0%';
+    for (let i = 0; i < $('.diffPercent').length; i++) {
+      $('.diffPercent')[i].innerHTML = '0%';
+    }
   }
 
   // page editing (extremely inconvenient setup)
@@ -144,4 +131,4 @@ function calculatePage() {
   
 }
 
-window.onload = calculatePage();
+onload = calculatePage;
